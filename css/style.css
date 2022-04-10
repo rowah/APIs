@@ -1,0 +1,72 @@
+/* Box Model Hack */
+* {
+  box-sizing: border-box;
+}
+
+/* Clear fix hack */
+.clearfix:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+}
+
+.clear {
+  clear: both;
+}
+
+/******************************************
+/* BASE STYLES
+/*******************************************/
+
+body {
+  background-color: blanchedalmond;
+}
+
+/******************************************
+/* LAYOUT
+/*******************************************/
+header,
+footer {
+  margin-bottom: 30px;
+  text-align: center;
+}
+select {
+  font-size: 1.1rem;
+}
+.section-container {
+  display: flex;
+  flex-direction: row;
+  margin-left: 20vw;
+  padding-right: 10vw;
+}
+.column {
+  flex: 1;
+}
+img {
+  max-width: 800px;
+  max-height: 650px;
+}
+span {
+  font-weight: bold;
+  text-decoration: underline;
+  font-size: 1.3rem;
+}
+#dog-name {
+  font-size: 1.5rem;
+  text-decoration: none;
+}
+#left-align {
+  text-align: center;
+}
+ul {
+  list-style: disc;
+}
+
+/******************************************
+/* ADDITIONAL STYLES
+/*******************************************/
+@media screen and (max-width: 800px) {
+}
