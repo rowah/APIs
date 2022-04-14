@@ -1,40 +1,27 @@
 document.querySelector('button').addEventListener('click', getImage)
 
 
+
 function getImage() {
 let date = document.querySelector('input').value
 
-// if(camera == fhaz) {
-    // fetch(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=R9a2clywVw5G9wR5KrOgemaIUZSdhW7Z4axzcIXL`)
-    // .then(res => res.json()) // parse response as JSON
-    // .then(data => {
-    //   console.log(data.photos[80].camera.name)
-    //  document.querySelector('img').src = data.photos[0].img_src
-    //  document.querySelector('h2').innerText = data.photos[0].camera.name
-    // })
-    // .catch(err => {
-    //     console.log(`error ${err}`)
-    // });
-//} else if (camera == mast) {
-    // fetch(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=R9a2clywVw5G9wR5KrOgemaIUZSdhW7Z4axzcIXL`)
-    // .then(res => res.json()) // parse response as JSON
-    // .then(data => {
-    //   console.log(data.photos[80].camera.name)
-    //  document.querySelector('img').src = data.photos[0].img_src
-    //  document.querySelector('h2').innerText = data.photos[0].camera.name
-    // })
-    // .catch(err => {
-    //     console.log(`error ${err}`)
-    // });
-
-//}
 fetch(`https://api.nasa.gov/planetary/apod?api_key=R9a2clywVw5G9wR5KrOgemaIUZSdhW7Z4axzcIXL&date=${date}`)
     .then(res => res.json()) // parse response as JSON
     .then(data => {
       console.log(data)
-     document.querySelector('img').src = data.hdurl
-     document.querySelector('h2').innerText += " " + data.copyright
-     document.querySelector('h3').innerText += " " + data.title
+    //  document.querySelector('img').src = data.hdurl
+    if(data.media_type === "image") {
+    document.querySelector('img').src = data.hdurl
+    document.querySelector('iframe').src = ''
+
+} else {
+    document.querySelector('img').src = ''
+    document.querySelector('iframe').src = data.url
+
+}
+     document.querySelector('h2').innerText = "Photographer: " + data.copyright
+     
+     document.querySelector('h3').innerText = "Image Title: " + data.title
      document.querySelector('div').innerText = data.explanation
     })
     .catch(err => {
