@@ -28,12 +28,14 @@ let date = document.querySelector('input').value
     // });
 
 //}
-fetch(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=R9a2clywVw5G9wR5KrOgemaIUZSdhW7Z4axzcIXL`)
+fetch(`https://api.nasa.gov/planetary/apod?api_key=R9a2clywVw5G9wR5KrOgemaIUZSdhW7Z4axzcIXL&date=${date}`)
     .then(res => res.json()) // parse response as JSON
     .then(data => {
-      console.log(data.photos[80].camera.name)
-     document.querySelector('img').src = data.photos[0].img_src
-     document.querySelector('h3').innerText = data.photos[0].camera.name
+      console.log(data)
+     document.querySelector('img').src = data.hdurl
+     document.querySelector('h2').innerText += " " + data.copyright
+     document.querySelector('h3').innerText += " " + data.title
+     document.querySelector('div').innerText = data.explanation
     })
     .catch(err => {
         console.log(`error ${err}`)
