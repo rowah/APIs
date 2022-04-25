@@ -59,6 +59,21 @@ update() {
   this.x += this.velX;
   this.y += this.velY;
 }
+//Adding collision detection
+collisionDetect() {
+  //looping through all the balls in the balls[] to see if it has collided with the curent one
+  for (const ball of balls) {
+     if (!(this === ball)) {
+        const dx = this.x - ball.x;
+        const dy = this.y - ball.y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+
+        if (distance < this.size + ball.size) {
+          ball.color = this.color = randomRGB();
+        }
+     }
+  }
+}
 
 
 }
@@ -90,6 +105,7 @@ function loop() {
   for (const ball of balls) {
     ball.draw();
     ball.update();
+    ball.collisionDetect();
   }
 
   requestAnimationFrame(loop);
@@ -98,13 +114,14 @@ function loop() {
 loop();//calling the loop functions to get the balls boubcing
 
 
-//Testing the ball
-const testBall = new Ball(50, 100, 4, 4, 'blue', 10);
-//Calling the Class's members
-testBall.x
-testBall.size
-testBall.color
-testBall.draw()
+// //Testing the ball
+// const testBall = new Ball(50, 100, 4, 4, 'blue', 10);
+//https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object_building_practice
+// //Calling the Class's members
+// testBall.x
+// testBall.size
+// testBall.color
+// testBall.draw()
 
 
 
