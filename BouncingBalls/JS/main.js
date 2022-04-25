@@ -95,6 +95,8 @@ function loop() {
   requestAnimationFrame(loop);
 }
 
+loop();//calling the loop functions to get the balls boubcing
+
 
 //Testing the ball
 const testBall = new Ball(50, 100, 4, 4, 'blue', 10);
