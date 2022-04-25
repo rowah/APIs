@@ -59,7 +59,7 @@ update() {
   this.x += this.velX;
   this.y += this.velY;
 }
-//Adding collision detection
+//Adding collision detection by adding the collisionDetect method to the class ball
 collisionDetect() {
   //looping through all the balls in the balls[] to see if it has collided with the curent one
   for (const ball of balls) {
@@ -105,7 +105,7 @@ function loop() {
   for (const ball of balls) {
     ball.draw();
     ball.update();
-    ball.collisionDetect();
+    ball.collisionDetect();// calling collsion detection
   }
 
   requestAnimationFrame(loop);
