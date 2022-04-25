@@ -59,7 +59,7 @@ update() {
   this.x += this.velX;
   this.y += this.velY;
 }
-//Adding collision detection by adding the collisionDetect method to the class ball
+//Adding collision detection by adding the collisionDetect method to
 collisionDetect() {
   //looping through all the balls in the balls[] to see if it has collided with the curent one
   for (const ball of balls) {
