@@ -1,5 +1,5 @@
 const canvas = document.querySelector('canvas');
-const ctx = canvas.getContext('2d');
+const ctx = canvas.getContext('2d');//Reps the drawing area
 
 const width = canvas.width = window.innerWidth;
 const height = canvas.height = window.innerHeight;
@@ -62,9 +62,11 @@ update() {
 
 
 }
-const balls = [];
 
-while (balls.length < 25) {
+//Animating the ball
+const balls = [];
+//create a new instance for the Ball() using the random values generated with random() and randomRGB() functions
+while (balls.length < 30) {
    const size = random(10,20);
    const ball = new Ball(
       // ball position always drawn at least one ball width
@@ -76,8 +78,21 @@ while (balls.length < 25) {
       randomRGB(),
       size
    );
-
+//pushes it to the end of the balls array but only when the number of balls in the array is < 30 such that no more balls get pushed once there are 30 balls in the array
   balls.push(ball);
+}
+
+//Animation loop, updates program information
+function loop() {
+  ctx.fillStyle = 'rgba(0, 0, 0, 0.25)';//fills color 
+  ctx.fillRect(0, 0, width, height);//draws a rectangle across the width and height of the canvas
+
+  for (const ball of balls) {
+    ball.draw();
+    ball.update();
+  }
+
+  requestAnimationFrame(loop);
 }
 
 
